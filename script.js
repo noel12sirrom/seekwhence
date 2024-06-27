@@ -2,7 +2,6 @@ const tiles = document.querySelectorAll(".tile");
 const startButton = document.getElementById("start-button");
 const toggleCorrect = document.getElementById('correct');
 const toggleIncorrect = document.getElementById('incorrect');
-let gameOver = false; //isnt used at yet... theres no reason t use it
 let sequence = [];
 let index = 0; //used to keep track of where in the pattern/sequence user is at
 let wrongTile = '';
@@ -99,11 +98,8 @@ function handleTileClick(event) {
     }
 }
 
-
 function removeTileClickListeners() {
     tiles.forEach(tile => {
         tile.removeEventListener('click',handleTileClick);
     });
 }
-
-
