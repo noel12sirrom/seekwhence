@@ -2,6 +2,9 @@ let gameOver = false;
 let sequence = [];
 let index = 0; //used to keep track of where in the pattern/sequence user is at
 let wrongTile = '';
+let gameSpeed = 2000;
+let score = 0;
+//let nextroundStartSpeed = sequence.length * 
 
 const tiles = document.querySelectorAll(".tile");
 const startButton = document.getElementById("start-button");
@@ -10,11 +13,12 @@ startButton.addEventListener('click', start);
 //disable until the whole game is over then enable
 
 function start(){
+    score = 0
     index = 0;
     sequence = [];
     gameOver = false;
     startButton.disabled = true;
-    
+    gameSpeed = 2000;
 
     addNewTileToSequence(); 
     play();
@@ -31,11 +35,11 @@ function displayTile() {
             setTimeout(() => {
                 tiles[sequence[i]].classList.remove("active");
             }, 1000); 
-        },i* 2000); // Each tile activates 2 second apart
+        },i* gameSpeed); // Each tile activates 2 second apart
     }
 
     // After displaying the sequence, wait for the user's input
-    setTimeout(getSequence, sequence.length * 2000);
+    setTimeout(getSequence, sequence.length * gameSpeed);
 }
 
 function getSequence() {
@@ -55,8 +59,14 @@ function handleTileClick(event) {
         index++;
         if (index === sequence.length) {// User has successfully followed the sequence
             index = 0;//index is at zero because the user is is going to redo pattern from start again
+            score += 1;
             addNewTileToSequence();
-            setTimeout(play, 1000);
+
+            if(gameSpeed >800){//increases speed with each level
+               gameSpeed -= 200; 
+            }
+            
+            setTimeout(play, 800);
         }
     } else { // Wrong tile clicked
         tile.classList.add('wrong-tile');
