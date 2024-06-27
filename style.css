@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Nabla:EDPT@91&family=Titan+One&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -23,7 +25,27 @@ body {
         background-color: rgb(200, 50, 20);
     }
 }
+@keyframes rotate{
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(5deg);
+    }
+    50%{
+        transform: rotate(-5deg);
+    }
+}
 
+#name{
+    font-family: "Bungee Spice", sans-serif;
+    font-weight: 400;
+    font-style: normal;  font-family: "Bungee Spice", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 5rem;
+    
+}
 
 #left{
     height: 100vh;
@@ -31,8 +53,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center; 
-    border-right: 3px solid rgb(134, 134, 248) ;
-    box-shadow: 3px 0 70px rgb(62, 62, 252);
+    border-right: 3px solid rgb(54, 54, 253) ;
+    box-shadow: 3px 0 70px rgb(62, 106, 252);
 }
 
 #middle{
@@ -63,9 +85,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-left: 3px solid rgb(255, 194, 79); 
-    box-shadow: 3px 0 70px rgb(255, 166, 0);
+    border-left: 3px solid rgb(255, 85, 79); 
+    box-shadow: 3px 0 70px rgb(255, 0, 0);
     height: 100vh;   
+}
+#leaderboard {
+    font-family: "Nabla", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+    "EDPT" 91,
+    "EHLT" 12;
+
 }
 
 .tile{
@@ -91,9 +123,11 @@ body {
     border: none;
     border-radius: 5px;
 }
-
 #start-button:focus {
     background-color: #007bff7b;
+}
+#start-button:disabled{
+    opacity: 50%;
 }
 
 .tile:hover{
@@ -104,15 +138,22 @@ body {
     transform: scale(0.95);
 }
 .active{
-    background-color: rgb(156, 114, 17);
-    border: 4px solid rgb(243, 254, 139);
-    transition: 0.3s ease-in-out;
-    box-shadow: 0px 0px 15px rgb(240, 244, 7);
+    background-color: rgba(51, 150, 1, 0.564);
+    border: 4px solid rgb(195, 254, 139);
+    transition: 0.1s ease-in-out;
+    box-shadow: 0px 0px 30px rgb(130, 244, 7);
     transform: scale(0.95);
 }
 
 .wrong-tile {
     animation: flicker 1s ease-in-out infinite;
+}
+.correct-tile {
+    background-color: rgba(47, 129, 6, 0.564);
+    border: 4px solid rgb(209, 248, 173);
+    transition: 0.2s ease-in-out;
+    box-shadow: 0px 0px 60px rgb(141, 247, 28);
+    transform: scale(0.95);
 }
 
 .no-hover {
@@ -133,9 +174,26 @@ body {
     justify-content: center;
 }
 #answer{
+    transition: color 0.3s ease-in-out;
+    font-family: "Titan One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.3rem;
+    color:rgb(47, 46, 46);
     height: 20%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+}
+
+.show-correct{
+    transition: 0.3s ease-in-out;
+    color: rgb(109, 203, 240);
+  
+}
+
+.show-incorrect{
+    transition: 0.3s ease-in-out;
+    color: rgb(243, 117, 63);
 }
