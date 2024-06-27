@@ -1,6 +1,6 @@
 let gameOver = false;
 let sequence = [];
-let index = 0;
+let index = 0; //used to keep track of where in the pattern/sequence user is at
 let wrongTile = '';
 
 const tiles = document.querySelectorAll(".tile");
@@ -41,7 +41,10 @@ function displayTile() {
 function getSequence() {
     tiles.forEach(tile => {
         tile.addEventListener('click', handleTileClick); // Add the event listener
+        tile.classList.remove('no-hover');//LETS YOU KNOW U CAN START CLICKING
     });
+
+    
 }
 
 function handleTileClick(event) {
@@ -50,9 +53,8 @@ function handleTileClick(event) {
 
     if (tileIndex === sequence[index]) { // Correct tile clicked
         index++;
-        if (index === sequence.length) {
-            // User has successfully followed the sequence
-            index = 0;
+        if (index === sequence.length) {// User has successfully followed the sequence
+            index = 0;//index is at zero because the user is is going to redo pattern from start again
             addNewTileToSequence();
             setTimeout(play, 1000);
         }
@@ -70,6 +72,10 @@ function play(){
         if (wrongTile){
             wrongTile.classList.remove('wrong-tile');
         }
+        tiles.forEach(tile => {
+           tile.classList.add('no-hover');
+        });
+        ;
         removeTileClickListeners();// Remove any existing listener
         displayTile();
     }
