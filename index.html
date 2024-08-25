@@ -11,12 +11,26 @@
 
 <body>
     <div id="left">
-        <button id="start-button">Start</button>
+        <div id="how-to-play">
+            <h1>How To Play</h1>
+            <p>Each round, the game highlights a sequence of tiles that you need to remember.<br><br>
+ 
+                If you click the tiles in the correct order, an extra tile is added to the sequence and you move on to the next round.
+                If you click the wrong tile at any point, the game is over, and your score is based on the number of rounds you completed. <br><br>
+                See how long you can last as the sequence gets longer and more challenging!
+            </p>
+        </div>
+        <div id="name-sect">
+            <input type="text" id="username" placeholder="Name">
+            <button id="start-button" onclick="verifyName()" disabled>Start</button>
+        </div>-+
+        
+       
     </div>
 
     <div id="middle">
-        <div id="game-name">
-            <h1 id="name">seekwhence</h1>
+        <div id="game-name-container">
+            <h1 id="game-name">seekwhence</h1>
         </div>
         
         <div id="gameboard">
@@ -41,5 +55,6 @@
     
     
 </body>
+<script src="game.js"></script>
 <script src="script.js"></script>
 </html>
